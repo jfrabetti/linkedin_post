@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publish-a-post</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='app.css')}}">     
+    <script type="text/javascript" charset="utf-8" src="{{url_for('static', filename='app.js')}}"></script>
+
+    <script>
+      window.addEventListener("load",on_app_load, false )      
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to LinkedIn GenAI Publish-A-Post</h1>
+
+    <div class="status">
+      <p class="status_label">Status:</p>
+      <p id="status_text_id" class="status_text">
+	Ok
+      </p>
+    </div>
+
+    <form method="POST" onsubmit="event.preventDefault(); submit_topic_gen_form();">
+      <div class="gen_form">
+	<div class="label_value">
+	  <label for="sess_label_id">Session Label:</label>
+	  <input type="text" id="sess_label_id" name="sess_label_id"/>
+	</div>
+	
+	<div class="label_value">
+	  <label for="sess_subject_id">Subject:</label>
+	  <input type="text" id="sess_subject_id" name="sess_subject_id"/>
+	</div>
+	
+	<div class="label_value">
+	  <label for="topic_count_id">Candidate Topic Count:</label>
+	  <input type="number" id="topic_count_id" name="topic_count_id" min="1" max="10" value="5" />
+	</div>
+	
+	<button type="submit">Generate Topics</button>
+      </div>
+    </form>
+    
+    <div id="topic_list_div">      
+    </div>
+    
+    <div id="facts_div">
+      <div id="facts_ctl_div">
+	<button id="facts_btn_id" onclick="on_btn_click('facts_btn_id')">Generate Facts</button>
+      </div>
+      <div id="facts_list_div">
+      </div>
+    </div>
+    
+    <div id="posts_div">
+      <div id="post_ctl_div">
+	<button id="post_btn_id" onclick="on_btn_click('post_btn_id')">Generate Posts</button>
+      </div>
+      <div id="post_list_div">
+      </div>
+    </div>
+
+    <div id="publish_div">
+      <div id="publish_ctl_div">
+	<button id="publish_btn_id" onclick="on_btn_click('publish_btn_id')">Publish Selected Post</button>
+      </div>
+      <div id="publish_list_div">
+      </div>
+    </div>
+    
+  </body>
+</html>
